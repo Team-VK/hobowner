@@ -16,3 +16,4 @@ expandedItems
 .vs/*
 
 *.meta
+*.dll
