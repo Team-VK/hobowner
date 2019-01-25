@@ -13,3 +13,5 @@ expandedItems
 #OS and IDE files
 .DS_Store
 .vscode/*
+
+*cs.meta
