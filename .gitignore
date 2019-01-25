@@ -1,0 +1,15 @@
+#Filtypes
+*.bin
+*.log
+*.db
+
+#Ignore unity temp and meta data that doesn't belong in git
+SonarQube/Temp/*
+SonarQube/Library/*
+SonarQube/Assembly-CSharp.csproj
+assetDatabase3
+expandedItems
+
+#OS and IDE files
+.DS_Store
+SonarQube/.vscode/*
