@@ -15,4 +15,4 @@ expandedItems
 .vscode/*
 .vs/*
 
-*cs.meta
+*.meta
