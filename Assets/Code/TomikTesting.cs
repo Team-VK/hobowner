@@ -23,8 +23,8 @@ public class TomikTesting : MonoBehaviour {
             var pos = Camera.main.ScreenToWorldPoint(mousepos);
             Vector3 trajectory = ( pos- transform.position);
             trajectory.z = 0f;
-            trajectory = trajectory.normalized * speed;
-            Debug.Log("########## launch " + pos + " " + trajectory);
+            float distance = Vector3.Distance (pos, transform.position);
+            trajectory = trajectory.normalized * speed * distance;
             rb.velocity = trajectory;
         }
     }
