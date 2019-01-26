@@ -29,7 +29,7 @@ public class ObjectSpawner : MonoBehaviour {
         float angle_rng = 0f;
         int velocity_rng = Random.Range(5, 20);
         int object_rng = Random.Range(0,9);
-        float spawnheight_rng = Random.Range(0f, 90f); //todo: sensible values for y coordinate of spawned objects
+        float spawnheight_rng = Random.Range(10f, 90f); //todo: sensible values for y coordinate of spawned objects
 
         time += Time.deltaTime / 100f;  //* (float) GameStatus.score;
         float rnd = Random.Range(0f, 1f);
@@ -49,12 +49,12 @@ public class ObjectSpawner : MonoBehaviour {
         float spawny = spawnheight_rng;
 
         if(side_rng >= 1) {
-            spawnx = -10; //todo: sensible value for left side
+            spawnx = -280; //todo: sensible value for left side
             angle_rng = Random.Range(270f, 359f);
         }
         else
         {
-            spawnx = 200; //todo: sensible value for right side
+            spawnx = 280; //todo: sensible value for right side
             angle_rng = Random.Range(0f, 90f);
         }
         
