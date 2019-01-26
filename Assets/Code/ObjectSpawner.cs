@@ -25,13 +25,11 @@ public class ObjectSpawner : MonoBehaviour {
     void Update () {
         // Odds of spawning a new obstacle increses as the game goes on
 
-        Debug.Log("Lel");
-
-        int side_rng = Random.Range(0, 1);
-        int angle_rng = Random.Range(0, 90); //todo: add sensible values based on which side the object spawns in
+        int side_rng = Random.Range(0, 2);
+        float angle_rng = 0f;
         int velocity_rng = Random.Range(5, 20);
-        int object_rng = Random.Range(0,8);
-        int spawnheight_rng = Random.Range(0, 90); //todo: sensible values for y coordinate of spawned objects
+        int object_rng = Random.Range(0,9);
+        float spawnheight_rng = Random.Range(0f, 90f); //todo: sensible values for y coordinate of spawned objects
 
         time += Time.deltaTime / 100f;  //* (float) GameStatus.score;
         float rnd = Random.Range(0f, 1f);
@@ -41,24 +39,25 @@ public class ObjectSpawner : MonoBehaviour {
         }
     }
 
-    private void spawnObjectInstance(int side_rng, int angle_rng, int velocity_rng, int object_rng, int spawnheight_rng) {
+    private void spawnObjectInstance(int side_rng, float angle_rng, int velocity_rng, int object_rng, float spawnheight_rng) {
 
         //Transform[] objects = new[] {box, board, shoe, cat, fpan, bottle, bomb, tv, cone};
         //Transform[] objects = new[] { Cube, Cube, Cube, Cube, Cube, Cube, Cube, Cube, Cube };
 
-        float spawnx = -100;
-        float spawny = -10000;
+        //Debug.Log("side rng: " + side_rng);
+        float spawnx = 0;
+        float spawny = spawnheight_rng;
 
-        if(side_rng > 1) {
-            spawnx = 90; //todo: sensible value for left side
+        if(side_rng >= 1) {
+            spawnx = -10; //todo: sensible value for left side
+            angle_rng = Random.Range(270f, 359f);
         }
         else
         {
-            spawnx = 180; //todo: sensible value for right side
+            spawnx = 200; //todo: sensible value for right side
+            angle_rng = Random.Range(0f, 90f);
         }
-
-        Debug.Log("Randomed spawn points: " + spawnx + "," + spawny);
-
+        
         Vector3 mainhobo = GameObject.FindGameObjectWithTag("mainhobo").transform.position;
         var pos = Camera.main.ViewportToWorldPoint(mainhobo);
         pos.x = spawnx;
@@ -67,10 +66,12 @@ public class ObjectSpawner : MonoBehaviour {
         //Debug.Log("Randomed spawn points after worldtoviewportpoint: " + pos.x + "," + spawny);
 
         //print(objects[object_rng]);
-        GameObject spawnedobject = Instantiate(cube, Camera.main.ViewportToWorldPoint(new Vector3(pos.x, pos.y, 0f)), Quaternion.identity);
-        Vector3 dir = Quaternion.AngleAxis(angle_rng, Vector3.forward) * Vector3.right;
-        spawnedobject.GetComponent<Rigidbody2D>().AddForce(dir * velocity_rng);
+        GameObject spawnedobject = Instantiate(cube, (new Vector3(pos.x, pos.y, 0f)), Quaternion.identity);
+        //Debug.Log("World pos: " + spawnedobject.transform.position);
+        Vector3 dir = Quaternion.AngleAxis(angle_rng, Vector3.up) * Vector3.right;
+        Debug.Log("Direction vector: " + dir);
+        Vector3 transDir = transform.TransformPoint(dir);
+        spawnedobject.GetComponent<Rigidbody>().AddForce(transDir * velocity_rng);
 
-
-        }
+    }
 }
