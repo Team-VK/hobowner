@@ -37,6 +37,9 @@ public class TomikTesting : MonoBehaviour {
             float distance = Vector3.Distance (pos, transform.position);
             // Check if this object is in grabbing range and there is no other objects being dragged
             // If this object is in dragging -> enter if and update trajectory
+
+            Debug.Log("#### distance: " + distance + " camPos: " + pos + " thisPos: " + transform.position);
+
             if ((distance < grabDistance && !isDraggingSomeOneElse) || dragging) {
                 // If object enters dragging mode - add points (if any) and set objects available points to 0
                 if (dragging == false) {
