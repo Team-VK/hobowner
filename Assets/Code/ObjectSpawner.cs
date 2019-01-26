@@ -70,19 +70,17 @@ public class ObjectSpawner : MonoBehaviour {
         //print(objects[object_rng]);
         GameObject spawnedobject = Instantiate(cube, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.identity);
         //Debug.Log("World pos: " + spawnedobject.transform.position);
-        Debug.Log("Angle:" + angle_rng);
+        //Debug.Log("Angle:" + angle_rng);
 
         Vector3 dir;
 
-        Debug.Log("#####");
+        //#Debug.Log("#####");
         if (angle_rng >= 270) {
             dir = Quaternion.AngleAxis(angle_rng, transform.TransformPoint(new Vector3(10,10,0))) * transform.TransformPoint((new Vector3(10,0,0)));
-            Debug.Log("Should fly LEFT");
         }
         else
         {
             dir = Quaternion.AngleAxis(angle_rng, transform.TransformPoint(new Vector3(-10, 10, 0))) * transform.TransformPoint(new Vector3(-10, 0, 0));
-            Debug.Log("Should fly RIGHT");
         }
 
 
@@ -91,9 +89,9 @@ public class ObjectSpawner : MonoBehaviour {
         spawnedobject.GetComponent<Rigidbody>().AddForce(transDir * velocity_rng);
 
 
-        Debug.Log("Velocity: " + velocity_rng);
-        Debug.Log("Direction vector: " + transDir);
-        Debug.Log("#####");
+        //Debug.Log("Velocity: " + velocity_rng);
+        //Debug.Log("Direction vector: " + transDir);
+        //Debug.Log("#####");
 
     }
 }

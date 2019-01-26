@@ -42,17 +42,28 @@ public class TomikTesting : MonoBehaviour {
                     Score.score += availablePoints;
                     availablePoints = 0;
                 }
+
                 // Move object towards mouse - the longer the distance, the faster it moves
                 dragging = true;
                 isDraggingSomeOneElse = true;
                 var mousepos = Input.mousePosition;
                 mousepos.z = zHack;
                 var pos = Camera.main.ScreenToWorldPoint(mousepos);
+
+                //Debug.Log("Pointer position: " + pos.x + ", " + pos.y);
+
                 Vector3 trajectory = (pos - transform.position);
                 float distance = Vector3.Distance (pos, transform.position);
-                trajectory.z = 0f;
-                trajectory = trajectory.normalized * draggingSpeed * distance;
+
+                Vector3 hobodude = GameObject.FindGameObjectWithTag("hobodude").transform.position;
+                trajectory.z = hobodude.z;
+                rb.velocity = new Vector3(0f, 0f, 0f);
+                rb.angularVelocity = new Vector3(0f, 0f, 0f);
+                transform.rotation = Quaternion.identity;
+
+                trajectory = trajectory.normalized * draggingSpeed * (distance/10);
                 rb.velocity = trajectory;
+                Debug.Log("mypos: " + rb.transform.position);
             }
         }
         else {
@@ -67,6 +78,52 @@ public class TomikTesting : MonoBehaviour {
         // Keep object in z axis
         //transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
+    /*
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if ((Physics.Raycast(ray, out hit) && hit.rigidbody == rb && !isDraggingSomeOneElse) || dragging)
+            {
+
+                Debug.Log(hit);
+                // If object enters dragging mode - add points (if any) and set objects available points to 0
+                if (dragging == false)
+                {
+                    Score.score += availablePoints;
+                    availablePoints = 0;
+                }
+                // Move object towards mouse - the longer the distance, the faster it moves
+                dragging = true;
+                isDraggingSomeOneElse = true;
+                var mousepos = Input.mousePosition;
+                mousepos.z = zHack;
+                var pos = Camera.main.ScreenToWorldPoint(mousepos);
+                Vector3 trajectory = (pos - transform.position);
+                float distance = Vector3.Distance(pos, transform.position);
+                trajectory.z = 0f;
+                trajectory = trajectory.normalized * draggingSpeed * distance;
+                rb.velocity = trajectory;
+            }
+        }
+        else
+        {
+            // If mouse one is not pressed, remove dragging flags
+            dragging = false;
+            isDraggingSomeOneElse = false;
+        }
+
+        // Decay available points on this object
+        decayPoints();
+
+        // Keep object in z axis
+        //transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+    }
+    */
 
     private void decayPoints() {
         currentPointDecayInterval -= Time.deltaTime;
