@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class TomikTesting : MonoBehaviour {
 
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     private float draggingSpeed = 10f;
     private float grabDistance = 1.5f;
     private float zHack = 10f;
+    private bool dragging = false;
 
 
     // Use this for initialization
     void Start() {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -25,12 +26,16 @@ public class TomikTesting : MonoBehaviour {
             var pos = Camera.main.ScreenToWorldPoint(mousepos);
             float distance = Vector3.Distance (pos, transform.position);
             // Check if this object is in grabbing range
-            if (distance < grabDistance) {
-                Vector3 trajectory = ( pos- transform.position);
+            if (distance < grabDistance || dragging) {
+                dragging = true;
+                Vector3 trajectory = (pos - transform.position);
                 trajectory.z = 0f;
                 trajectory = trajectory.normalized * draggingSpeed * distance;
                 rb.velocity = trajectory;
             }
+        }
+        else {
+            dragging = false;
         }
     }
 }
