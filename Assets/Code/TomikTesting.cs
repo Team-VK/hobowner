@@ -26,10 +26,10 @@ public class TomikTesting : MonoBehaviour {
             mouseDown = true;
             //Debug.Log("##########1 " + Input.mousePosition);
             var pos = Input.mousePosition;
-            pos.z = 10;
+            pos.z = 500;
             pos = Camera.main.ScreenToWorldPoint(pos);
             transform.position = pos;
-            //Debug.Log("##########2 " + transform.position);
+            Debug.Log("##########2 " + transform.position);
             lastpos = pos;
             rb.velocity = Vector2.zero;
         }
