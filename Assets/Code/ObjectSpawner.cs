@@ -27,7 +27,7 @@ public class ObjectSpawner : MonoBehaviour {
 
         int side_rng = Random.Range(0, 2);
         float angle_rng = 0f;
-        int velocity_rng = Random.Range(5, 20);
+        int velocity_rng = Random.Range(40, 60);    
         int object_rng = Random.Range(0,9);
         float spawnheight_rng = Random.Range(10f, 90f); //todo: sensible values for y coordinate of spawned objects
 
@@ -49,13 +49,13 @@ public class ObjectSpawner : MonoBehaviour {
         float spawny = spawnheight_rng;
 
         if(side_rng >= 1) {
-            spawnx = -280; //todo: sensible value for left side
-            angle_rng = Random.Range(270f, 359f);
+            spawnx = -120; //todo: sensible value for left side
+            angle_rng = Random.Range(270f, 330f);
         }
         else
         {
-            spawnx = 280; //todo: sensible value for right side
-            angle_rng = Random.Range(0f, 90f);
+            spawnx = 120; //todo: sensible value for right side
+            angle_rng = Random.Range(0f, 60f);
         }
         
         Vector3 mainhobo = GameObject.FindGameObjectWithTag("mainhobo").transform.position;
@@ -63,11 +63,12 @@ public class ObjectSpawner : MonoBehaviour {
 
         pos.x = spawnx;
         pos.y = spawny;
+        pos.z = -270f;
 
         //Debug.Log("Randomed spawn points after worldtoviewportpoint: " + pos.x + "," + spawny);
 
         //print(objects[object_rng]);
-        GameObject spawnedobject = Instantiate(cube, (new Vector3(pos.x, pos.y, 0f)), Quaternion.identity);
+        GameObject spawnedobject = Instantiate(cube, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.identity);
         //Debug.Log("World pos: " + spawnedobject.transform.position);
         Debug.Log("Angle:" + angle_rng);
 

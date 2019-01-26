@@ -65,7 +65,7 @@ public class TomikTesting : MonoBehaviour {
         decayPoints();
 
         // Keep object in z axis
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        //transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
     private void decayPoints() {
