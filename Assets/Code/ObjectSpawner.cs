@@ -60,6 +60,7 @@ public class ObjectSpawner : MonoBehaviour {
         
         Vector3 mainhobo = GameObject.FindGameObjectWithTag("mainhobo").transform.position;
         var pos = Camera.main.ViewportToWorldPoint(mainhobo);
+
         pos.x = spawnx;
         pos.y = spawny;
 
@@ -68,10 +69,30 @@ public class ObjectSpawner : MonoBehaviour {
         //print(objects[object_rng]);
         GameObject spawnedobject = Instantiate(cube, (new Vector3(pos.x, pos.y, 0f)), Quaternion.identity);
         //Debug.Log("World pos: " + spawnedobject.transform.position);
-        Vector3 dir = Quaternion.AngleAxis(angle_rng, Vector3.up) * Vector3.right;
-        Debug.Log("Direction vector: " + dir);
-        Vector3 transDir = transform.TransformPoint(dir);
+        Debug.Log("Angle:" + angle_rng);
+
+        Vector3 dir;
+
+        Debug.Log("#####");
+        if (angle_rng >= 270) {
+            dir = Quaternion.AngleAxis(angle_rng, transform.TransformPoint(new Vector3(10,10,0))) * transform.TransformPoint((new Vector3(10,0,0)));
+            Debug.Log("Should fly LEFT");
+        }
+        else
+        {
+            dir = Quaternion.AngleAxis(angle_rng, transform.TransformPoint(new Vector3(-10, 10, 0))) * transform.TransformPoint(new Vector3(-10, 0, 0));
+            Debug.Log("Should fly RIGHT");
+        }
+
+
+        Vector3 transDir = dir;
+        //Vector3 transDir = transform.TransformPoint(dir);
         spawnedobject.GetComponent<Rigidbody>().AddForce(transDir * velocity_rng);
+
+
+        Debug.Log("Velocity: " + velocity_rng);
+        Debug.Log("Direction vector: " + transDir);
+        Debug.Log("#####");
 
     }
 }
