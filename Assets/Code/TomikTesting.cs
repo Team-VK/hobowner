@@ -13,7 +13,6 @@ public class TomikTesting : MonoBehaviour {
     // private fields for this object
     private Rigidbody rb;
     private float draggingSpeed = 10f;
-    private float grabDistance = 1.5f;
     private bool dragging = false;
     private float currentPointDecayInterval;
 
@@ -31,26 +30,26 @@ public class TomikTesting : MonoBehaviour {
 
     void Update() {
         if (Input.GetMouseButton(0)) {
-            var mousepos = Input.mousePosition;
-            mousepos.z = zHack;
-            var pos = Camera.main.ScreenToWorldPoint(mousepos);
-            float distance = Vector3.Distance (pos, transform.position);
-            // Check if this object is in grabbing range and there is no other objects being dragged
-            // If this object is in dragging -> enter if and update trajectory
 
-            Debug.Log("#### distance: " + distance + " camPos: " + pos + " thisPos: " + transform.position);
-
-            if ((distance < grabDistance && !isDraggingSomeOneElse) || dragging) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+ 
+            if ((Physics.Raycast(ray, out hit) && hit.rigidbody == rb && !isDraggingSomeOneElse) || dragging) {
+           
+                Debug.Log(hit);
                 // If object enters dragging mode - add points (if any) and set objects available points to 0
                 if (dragging == false) {
                     Score.score += availablePoints;
                     availablePoints = 0;
-                    Debug.Log("########## " + Score.score);
                 }
                 // Move object towards mouse - the longer the distance, the faster it moves
                 dragging = true;
                 isDraggingSomeOneElse = true;
+                var mousepos = Input.mousePosition;
+                mousepos.z = zHack;
+                var pos = Camera.main.ScreenToWorldPoint(mousepos);
                 Vector3 trajectory = (pos - transform.position);
+                float distance = Vector3.Distance (pos, transform.position);
                 trajectory.z = 0f;
                 trajectory = trajectory.normalized * draggingSpeed * distance;
                 rb.velocity = trajectory;
