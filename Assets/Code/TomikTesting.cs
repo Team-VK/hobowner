@@ -5,42 +5,37 @@ using UnityEngine;
 
 public class TomikTesting : MonoBehaviour {
 
-
-    private Vector3 mousePosition;
-    private Vector2 direction;
-    private bool mouseDown = false;
-    private Vector3 lastpos;
-    private Rigidbody2D rb;
-    private float speed = 10f;
+    private Rigidbody rb;
+    private float draggingSpeed = 10f;
+    private float grabDistance = 1.5f;
+    private float zHack = 10f;
+    private bool dragging = false;
 
 
     // Use this for initialization
     void Start() {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
 
     void Update() {
         if (Input.GetMouseButton(0)) {
-            mouseDown = true;
-            //Debug.Log("##########1 " + Input.mousePosition);
-            var pos = Input.mousePosition;
-            pos.z = 500;
-            pos = Camera.main.ScreenToWorldPoint(pos);
-            transform.position = pos;
-            Debug.Log("##########2 " + transform.position);
-            lastpos = pos;
-            rb.velocity = Vector2.zero;
+            var mousepos = Input.mousePosition;
+            mousepos.z = zHack;
+            var pos = Camera.main.ScreenToWorldPoint(mousepos);
+            float distance = Vector3.Distance (pos, transform.position);
+            // Check if this object is in grabbing range
+            if (distance < grabDistance || dragging) {
+                dragging = true;
+                Vector3 trajectory = (pos - transform.position);
+                trajectory.z = 0f;
+                trajectory = trajectory.normalized * draggingSpeed * distance;
+                rb.velocity = trajectory;
+            }
         }
-        else if (mouseDown == true) {
-            var mousepos =  Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseDown = false;
-            Vector3 trajectory = ( mousepos- lastpos);
-            trajectory.z = 0f;
-            trajectory = trajectory.normalized * speed;
-            Debug.Log("########## launch " + mousepos + " " + lastpos + " " + trajectory);
-            rb.velocity = trajectory;
+        else {
+            dragging = false;
         }
     }
 }
