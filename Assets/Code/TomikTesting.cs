@@ -8,12 +8,12 @@ public class TomikTesting : MonoBehaviour {
     // public variables for this object, edit from Unity menu 
     public int availablePoints = 40;
     public float pointDecayInterval = 0.2f;
+    public float zHack = 10f;
 
     // private fields for this object
     private Rigidbody rb;
     private float draggingSpeed = 10f;
     private float grabDistance = 1.5f;
-    private float zHack = 10f;
     private bool dragging = false;
     private float currentPointDecayInterval;
 
