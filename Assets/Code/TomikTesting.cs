@@ -38,4 +38,10 @@ public class TomikTesting : MonoBehaviour {
             dragging = false;
         }
     }
+
+
+    public void Exploder(float explosionForce, Vector3 position, float explosionRadius, float upwardsModifier, ForceMode mode) {
+
+        rb.AddExplosionForce(explosionForce, position, explosionRadius, upwardsModifier, mode);
+    }
 }
