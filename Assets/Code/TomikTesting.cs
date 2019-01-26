@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class TomikTesting : MonoBehaviour {
 
-
-    private Vector3 mousePosition;
-    private Vector2 direction;
-    private bool mouseDown = false;
-    private Vector3 lastpos;
     private Rigidbody2D rb;
     private float speed = 10f;
 
@@ -23,23 +18,13 @@ public class TomikTesting : MonoBehaviour {
 
     void Update() {
         if (Input.GetMouseButton(0)) {
-            mouseDown = true;
-            //Debug.Log("##########1 " + Input.mousePosition);
-            var pos = Input.mousePosition;
-            pos.z = 10;
-            pos = Camera.main.ScreenToWorldPoint(pos);
-            transform.position = pos;
-            //Debug.Log("##########2 " + transform.position);
-            lastpos = pos;
-            rb.velocity = Vector2.zero;
-        }
-        else if (mouseDown == true) {
-            var mousepos =  Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseDown = false;
-            Vector3 trajectory = ( mousepos- lastpos);
+            var mousepos = Input.mousePosition;
+            mousepos.z = 10f;
+            var pos = Camera.main.ScreenToWorldPoint(mousepos);
+            Vector3 trajectory = ( pos- transform.position);
             trajectory.z = 0f;
             trajectory = trajectory.normalized * speed;
-            Debug.Log("########## launch " + mousepos + " " + lastpos + " " + trajectory);
+            Debug.Log("########## launch " + pos + " " + trajectory);
             rb.velocity = trajectory;
         }
     }
