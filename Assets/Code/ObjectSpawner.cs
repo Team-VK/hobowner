@@ -79,7 +79,7 @@ public class ObjectSpawner : MonoBehaviour {
         {
             spawnedobject = Instantiate(Plank, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.Euler(0, 90, 0));
         }
-        if (objects[object_rng] == Bomb)
+        else if (objects[object_rng] == Bomb)
         {
             spawnedobject = Instantiate(Bomb, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.Euler(270, 0, 90));
         }

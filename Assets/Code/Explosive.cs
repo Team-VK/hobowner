@@ -29,6 +29,7 @@ public class Explosive : MonoBehaviour {
 	void Explode() {
 		foreach (ObjectDrag o in ObjectSpawner.draggableList) {
             ObjectDrag g = (ObjectDrag) o;
+            Debug.Log("######## EXPLODING: " + g.gameObject.name);
 			g.Exploder(explosionForce, transform.position, explosionRadius, upwardsModifier, mode);
 		}
 		ObjectSpawner.draggableList.Remove(this.GetComponent<ObjectDrag>());
