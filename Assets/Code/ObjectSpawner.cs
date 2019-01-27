@@ -15,6 +15,7 @@ public class ObjectSpawner : MonoBehaviour {
     //public static Transform cone;
     public Transform cube;
     public Transform Plank;
+    public Transform Bomb;
 
     private float time = 0f;
 
@@ -32,7 +33,7 @@ public class ObjectSpawner : MonoBehaviour {
         int object_rng = Random.Range(0,9);
         float spawnheight_rng = Random.Range(10f, 90f); //todo: sensible values for y coordinate of spawned objects
 
-        time += Time.deltaTime / 100f;  //* (float) GameStatus.score;
+        time += Time.deltaTime / 1000f;  //* (float) GameStatus.score;
         float rnd = Random.Range(0f, 1f);
         if (time > rnd) {
             spawnObjectInstance(side_rng, angle_rng, velocity_rng, object_rng, spawnheight_rng);
@@ -43,7 +44,7 @@ public class ObjectSpawner : MonoBehaviour {
     private void spawnObjectInstance(int side_rng, float angle_rng, int velocity_rng, int object_rng, float spawnheight_rng) {
 
         //Transform[] objects = new[] {box, board, shoe, cat, fpan, bottle, bomb, tv, cone};
-        Transform[] objects = new[] { Plank, Plank, Plank, Plank, cube, cube, cube, cube, cube };
+        Transform[] objects = new[] { Plank, Plank, Bomb, Bomb, cube, cube, cube, cube, cube };
 
         //Debug.Log("side rng: " + side_rng);
         float spawnx = 0;
@@ -58,7 +59,7 @@ public class ObjectSpawner : MonoBehaviour {
             spawnx = 120; //todo: sensible value for right side
             angle_rng = Random.Range(0f, 60f);
         }
-        
+
         Vector3 mainhobo = GameObject.FindGameObjectWithTag("mainhobo").transform.position;
         var pos = Camera.main.ViewportToWorldPoint(mainhobo);
 
@@ -69,7 +70,20 @@ public class ObjectSpawner : MonoBehaviour {
         //Debug.Log("Randomed spawn points after worldtoviewportpoint: " + pos.x + "," + spawny);
 
         print("Object to be instantiated: " + objects[object_rng]);
-        Transform spawnedobject = Instantiate(Plank, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.identity);
+
+        Transform spawnedobject;
+        if (objects[object_rng] == Plank)
+        {
+            spawnedobject = Instantiate(Plank, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.Euler(0, 90, 0));
+        }
+        if (objects[object_rng] == Bomb)
+        {
+            spawnedobject = Instantiate(Bomb, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.Euler(270, 0, 90));
+        }
+        else
+        {
+            spawnedobject = Instantiate(cube, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.identity);
+        }
         //Debug.Log("World pos: " + spawnedobject.transform.position);
         //Debug.Log("Angle:" + angle_rng);
 

@@ -13,7 +13,7 @@ public class sphereVoda : MonoBehaviour {
     //public static Transform bomb;
     //public static Transform tv;
     //public static Transform cone;
-    public GameObject sphere;
+    public GameObject raindrop;
 
     private float time = 0f;
 

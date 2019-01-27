@@ -356,6 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube: {fileID: 2901840329231308558, guid: d8ed5b0af31e6412ba220fcdbadf81ad, type: 3}
   Plank: {fileID: 627339092597362697, guid: de1ae88c89aff442aa52ee445c6051cf, type: 3}
+  Bomb: {fileID: 2399927785857824814, guid: b55d8e2400e7042259a2c8311c8b250e, type: 3}
 --- !u!65 &1256935457
 BoxCollider:
   m_ObjectHideFlags: 0
