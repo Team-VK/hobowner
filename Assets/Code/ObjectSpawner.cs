@@ -13,7 +13,8 @@ public class ObjectSpawner : MonoBehaviour {
     //public static Transform bomb;
     //public static Transform tv;
     //public static Transform cone;
-    public GameObject cube;
+    public Transform cube;
+    public Transform Plank;
 
     private float time = 0f;
 
@@ -42,7 +43,7 @@ public class ObjectSpawner : MonoBehaviour {
     private void spawnObjectInstance(int side_rng, float angle_rng, int velocity_rng, int object_rng, float spawnheight_rng) {
 
         //Transform[] objects = new[] {box, board, shoe, cat, fpan, bottle, bomb, tv, cone};
-        //Transform[] objects = new[] { Cube, Cube, Cube, Cube, Cube, Cube, Cube, Cube, Cube };
+        Transform[] objects = new[] { Plank, cube, cube, cube, cube, cube, cube, cube, cube };
 
         //Debug.Log("side rng: " + side_rng);
         float spawnx = 0;
@@ -68,7 +69,7 @@ public class ObjectSpawner : MonoBehaviour {
         //Debug.Log("Randomed spawn points after worldtoviewportpoint: " + pos.x + "," + spawny);
 
         //print(objects[object_rng]);
-        GameObject spawnedobject = Instantiate(cube, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.identity);
+        Transform spawnedobject = Instantiate(objects[object_rng], (new Vector3(pos.x, pos.y, pos.z)), Quaternion.identity);
         //Debug.Log("World pos: " + spawnedobject.transform.position);
         //Debug.Log("Angle:" + angle_rng);
 

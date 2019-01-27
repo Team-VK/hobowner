@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2901840329231308552}
   - component: {fileID: 2901840329231308553}
   - component: {fileID: 2901840329231308554}
-  - component: {fileID: 5734620230213254720}
+  - component: {fileID: 341961751711109208}
   m_Layer: 0
   m_Name: Cube
   m_TagString: mainhobo
@@ -95,7 +95,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!65 &2901840329231308554
 BoxCollider:
@@ -110,7 +110,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5734620230213254720
+--- !u!114 &341961751711109208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2901840329231308596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e67c99f39a21747eea63a71028adfd85, type: 3}
+  m_Script: {fileID: 11500000, guid: 160b607ff30f64446ba33683a03b1428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   availablePoints: 40

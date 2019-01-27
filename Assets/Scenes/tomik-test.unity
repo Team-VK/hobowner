@@ -196,7 +196,6 @@ GameObject:
   - component: {fileID: 73313355}
   - component: {fileID: 73313353}
   - component: {fileID: 73313352}
-  - component: {fileID: 73313354}
   m_Layer: 0
   m_Name: TestCube
   m_TagString: Untagged
@@ -235,21 +234,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &73313354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73313351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e67c99f39a21747eea63a71028adfd85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  availablePoints: 40
-  pointDecayInterval: 0.2
-  zHack: 10
 --- !u!23 &73313355
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -324,7 +308,6 @@ GameObject:
   - component: {fileID: 193105807}
   - component: {fileID: 193105806}
   - component: {fileID: 193105805}
-  - component: {fileID: 193105804}
   m_Layer: 0
   m_Name: hobo
   m_TagString: Untagged
@@ -332,18 +315,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &193105804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193105803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a49bae43ee57705697f7e1f66e728ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &193105805
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -895,7 +866,6 @@ GameObject:
   - component: {fileID: 1773165764}
   - component: {fileID: 1773165762}
   - component: {fileID: 1773165761}
-  - component: {fileID: 1773165763}
   m_Layer: 0
   m_Name: TestCube (1)
   m_TagString: Untagged
@@ -934,21 +904,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1773165763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773165760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e67c99f39a21747eea63a71028adfd85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  availablePoints: 40
-  pointDecayInterval: 0.2
-  zHack: 10
 --- !u!23 &1773165764
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1024,7 +979,6 @@ GameObject:
   - component: {fileID: 1895878579}
   - component: {fileID: 1895878578}
   - component: {fileID: 1895878577}
-  - component: {fileID: 1895878582}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1120,21 +1074,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1895878582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895878576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e67c99f39a21747eea63a71028adfd85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  availablePoints: 40
-  pointDecayInterval: 0.2
-  zHack: 10
 --- !u!1 &2035609192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,7 +1112,7 @@ Terrain:
   m_GameObject: {fileID: 2035609192}
   m_Enabled: 1
   serializedVersion: 3
-  m_TerrainData: {fileID: 15600000, guid: 3f192656bbe9af7faad7b47c313f6aeb, type: 2}
+  m_TerrainData: {fileID: 0}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5

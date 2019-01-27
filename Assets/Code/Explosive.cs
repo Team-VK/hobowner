@@ -27,10 +27,10 @@ public class Explosive : MonoBehaviour {
 	}
 
 	void Explode() {
-		object[] obj = GameObject.FindObjectsOfType(typeof (TomikTesting));
+		object[] obj = GameObject.FindObjectsOfType(typeof (ObjectDrag));
 		foreach (object o in obj) {
 			Debug.Log(transform.position);
-			TomikTesting g = (TomikTesting) o;
+            ObjectDrag g = (ObjectDrag) o;
 			g.Exploder(explosionForce, transform.position, explosionRadius, upwardsModifier, mode);
 		}
 		Destroy(this.gameObject);
