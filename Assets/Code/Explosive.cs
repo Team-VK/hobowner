@@ -23,22 +23,22 @@ public class Explosive : MonoBehaviour {
 
     // When explosive hits anything - explode
 	void OnCollisionEnter(Collision coll) {
-        Explode(coll);
+        Rigidbody collidingObject = coll.rigidbody;
+        if (!(collidingObject.gameObject.name == "raindrop(Clone)"))
+        {
+            Explode(coll);
+        }
 	}
 
 	void Explode(Collision coll) {
 		foreach (ObjectDrag o in ObjectSpawner.draggableList) {
             ObjectDrag g = (ObjectDrag) o;
-
             Rigidbody collidingObject = coll.rigidbody;
-            if (!(collidingObject.gameObject.name == "raindrop(Clone)")) {
-                g.Exploder(explosionForce, transform.position, explosionRadius, upwardsModifier, mode);
-                ObjectSpawner.draggableList.Remove(this.GetComponent<ObjectDrag>());
-                Destroy(this.gameObject);
-                Debug.Log("######## EXPLODING: " + g.gameObject.name);
+            g.Exploder(explosionForce, transform.position, explosionRadius, upwardsModifier, mode);
+       }
 
-            }
-		}
+        ObjectSpawner.draggableList.Remove(this.GetComponent<ObjectDrag>());
+        Destroy(this.gameObject);
 		
 	}
 }

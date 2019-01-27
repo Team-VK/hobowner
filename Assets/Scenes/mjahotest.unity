@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0963167ba605e484b884a8d2780715fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 2901840329231308558, guid: d8ed5b0af31e6412ba220fcdbadf81ad, type: 3}
+  cube: {fileID: 5236403384520787969, guid: e84df262ddf4844888b3b117329b0629, type: 3}
   Plank: {fileID: 627339092597362697, guid: de1ae88c89aff442aa52ee445c6051cf, type: 3}
   Bomb: {fileID: 2399927785857824814, guid: b55d8e2400e7042259a2c8311c8b250e, type: 3}
 --- !u!65 &1256935457
@@ -575,7 +575,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256935455}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -909,6 +909,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1790174902}
+--- !u!114 &2054293495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054293491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6374e0817285c42ef95f4b3aac075e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availablePoints: 0
+  pointDecayInterval: 0
+  zHack: 10
 --- !u!114 &2054293497
 MonoBehaviour:
   m_ObjectHideFlags: 0
