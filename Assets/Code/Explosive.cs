@@ -35,6 +35,8 @@ public class Explosive : MonoBehaviour {
                 g.Exploder(explosionForce, transform.position, explosionRadius, upwardsModifier, mode);
                 ObjectSpawner.draggableList.Remove(this.GetComponent<ObjectDrag>());
                 Destroy(this.gameObject);
+                Debug.Log("######## EXPLODING: " + g.gameObject.name);
+
             }
 		}
 		
