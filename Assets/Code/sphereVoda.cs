@@ -27,7 +27,15 @@ public class sphereVoda : MonoBehaviour {
     void Update () {
         Debug.Log("Update");
 
-        spawnRaindrop();
+        time += Time.deltaTime / 100f;  //* (float) GameStatus.score;
+        float rnd = Random.Range(0f, 1f);
+        if (time > rnd)
+        {
+            spawnRaindrop();
+            time = 0f;
+        }
+
+
         if(drops.Count > 700) { 
             GameObject dequeuedobject = drops.Dequeue();
             Destroy(dequeuedobject);

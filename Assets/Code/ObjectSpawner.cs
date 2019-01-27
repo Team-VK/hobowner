@@ -15,6 +15,7 @@ public class ObjectSpawner : MonoBehaviour {
     //public static Transform cone;
     public Transform cube;
     public Transform Plank;
+    public Transform Bomb;
 
     private float time = 0f;
     public static List<ObjectDrag> draggableList = new List<ObjectDrag>();
@@ -44,7 +45,7 @@ public class ObjectSpawner : MonoBehaviour {
     private void spawnObjectInstance(int side_rng, float angle_rng, int velocity_rng, int object_rng, float spawnheight_rng) {
 
         //Transform[] objects = new[] {box, board, shoe, cat, fpan, bottle, bomb, tv, cone};
-        Transform[] objects = new[] { Plank, Plank, Plank, Plank, cube, cube, cube, cube, cube };
+        Transform[] objects = new[] { Plank, Plank, Bomb, cube, cube, cube, cube, cube, cube };
 
         //Debug.Log("side rng: " + side_rng);
         float spawnx = 0;
@@ -59,6 +60,7 @@ public class ObjectSpawner : MonoBehaviour {
             spawnx = 120; //todo: sensible value for right side
             angle_rng = Random.Range(0f, 60f);
         }
+
         
         Vector3 mainhobo = GameObject.FindGameObjectWithTag("mainhobo").transform.position;
         var pos = Camera.main.ViewportToWorldPoint(mainhobo);
@@ -70,9 +72,21 @@ public class ObjectSpawner : MonoBehaviour {
         //Debug.Log("Randomed spawn points after worldtoviewportpoint: " + pos.x + "," + spawny);
 
         print("Object to be instantiated: " + objects[object_rng]);
-        Transform spawnedobject = Instantiate(Plank, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.identity);
-        //Debug.Log("World pos: " + spawnedobject.transform.position);
-        //Debug.Log("Angle:" + angle_rng);
+
+        Transform spawnedobject;
+
+        if (objects[object_rng] == Plank)
+        {
+            spawnedobject = Instantiate(Plank, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.Euler(0, 90, 0));
+        }
+        if (objects[object_rng] == Bomb)
+        {
+            spawnedobject = Instantiate(Bomb, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.Euler(270, 0, 90));
+        }
+        else
+        {
+            spawnedobject = Instantiate(cube, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.identity);
+        }
 
         Vector3 dir;
 
