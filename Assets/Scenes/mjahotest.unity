@@ -213,6 +213,46 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 367d3817718074c09989a12af3d8f5c1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d6450ad9dad841979bfecde221e34df, type: 3}
+--- !u!1 &544249385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 1d6450ad9dad841979bfecde221e34df,
+    type: 3}
+  m_PrefabInstance: {fileID: 295675350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &544249386
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544249385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300026, guid: 1d6450ad9dad841979bfecde221e34df, type: 3}
+--- !u!1 &582554134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 1d6450ad9dad841979bfecde221e34df,
+    type: 3}
+  m_PrefabInstance: {fileID: 295675350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &582554135
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582554134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300028, guid: 1d6450ad9dad841979bfecde221e34df, type: 3}
 --- !u!1 &891728697
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +375,7 @@ GameObject:
   - component: {fileID: 1256935459}
   - component: {fileID: 1256935457}
   - component: {fileID: 1256935456}
+  - component: {fileID: 1256935458}
   m_Layer: 0
   m_Name: Cube
   m_TagString: mainhobo
@@ -370,6 +411,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1256935458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256935455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491def3fe925540809e24f24f57e3165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raindrop: {fileID: 2467293890419156285, guid: 123622937d2664775a891132db587650,
+    type: 3}
 --- !u!23 &1256935459
 MeshRenderer:
   m_ObjectHideFlags: 0
