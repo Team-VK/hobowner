@@ -37,8 +37,7 @@ public class ObjectDrag : MonoBehaviour {
             RaycastHit hit;
  
             if ((Physics.Raycast(ray, out hit) && hit.rigidbody == rb && !isDraggingSomeOneElse) || dragging) {
-           
-                Debug.Log(hit);
+        
                 // If object enters dragging mode - add points (if any) and set objects available points to 0
                 if (dragging == false) {
                     Score.score += availablePoints;
