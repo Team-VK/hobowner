@@ -6,9 +6,9 @@ public class Explosive : MonoBehaviour {
 
 	private Rigidbody rb;
 
-	private static float explosionForce = 300f;
-	private static float explosionRadius = 20f;
-	private static float upwardsModifier = 10f;
+	public float explosionForce = 30000f;
+	public float explosionRadius = 2000f;
+	public float upwardsModifier = 10f;
 	private static ForceMode mode = ForceMode.Force;
 
 	void Start() {
@@ -27,12 +27,11 @@ public class Explosive : MonoBehaviour {
 	}
 
 	void Explode() {
-		object[] obj = GameObject.FindObjectsOfType(typeof (ObjectDrag));
-		foreach (object o in ObjectSpawner.draggableList) {
-			Debug.Log(transform.position);
+		foreach (ObjectDrag o in ObjectSpawner.draggableList) {
             ObjectDrag g = (ObjectDrag) o;
 			g.Exploder(explosionForce, transform.position, explosionRadius, upwardsModifier, mode);
 		}
+		ObjectSpawner.draggableList.Remove(this.GetComponent<ObjectDrag>());
 		Destroy(this.gameObject);
 	}
 }

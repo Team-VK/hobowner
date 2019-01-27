@@ -45,7 +45,7 @@ public class ObjectSpawner : MonoBehaviour {
     private void spawnObjectInstance(int side_rng, float angle_rng, int velocity_rng, int object_rng, float spawnheight_rng) {
 
         //Transform[] objects = new[] {box, board, shoe, cat, fpan, bottle, bomb, tv, cone};
-        Transform[] objects = new[] { Plank, Plank, Bomb, cube, cube, cube, cube, cube, cube };
+        Transform[] objects = new[] { Plank, Plank, Bomb, cube, Bomb, cube, Bomb, cube, Bomb };
 
         //Debug.Log("side rng: " + side_rng);
         float spawnx = 0;
