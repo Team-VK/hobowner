@@ -15,6 +15,7 @@ public class ObjectDrag : MonoBehaviour {
     private float draggingSpeed = 10f;
     private bool dragging = false;
     private float currentPointDecayInterval;
+    public static Camera camera;
 
     // a flag for checking if any objects of this type is being dragged
     private static bool isDraggingSomeOneElse = false;
@@ -24,6 +25,7 @@ public class ObjectDrag : MonoBehaviour {
     void Start() {
         rb = GetComponent<Rigidbody>();
         currentPointDecayInterval = pointDecayInterval;
+        camera = Camera.main;
     }
 
     // Update is called once per frame
@@ -47,12 +49,14 @@ public class ObjectDrag : MonoBehaviour {
                 dragging = true;
                 isDraggingSomeOneElse = true;
 
-                Vector3 pos = Input.mousePosition;
-                pos.z = transform.position.z - Camera.main.transform.position.z;
-                transform.position = Camera.main.ScreenToWorldPoint(pos);
-                rb.angularVelocity = Vector3.zero;
+                Vector3 inputpos = Input.mousePosition;
+                inputpos.z = transform.position.z - (Camera.main.gameObject.transform.position.z);
+                Vector3 targetPos = Camera.main.ScreenToWorldPoint(inputpos);
 
-
+                Vector3 trajectory = (targetPos - transform.position);
+                float distance = Vector3.Distance (targetPos, transform.position);
+                trajectory = trajectory.normalized * draggingSpeed * distance;
+                rb.velocity = trajectory;
             }
         }
         else {
@@ -63,9 +67,6 @@ public class ObjectDrag : MonoBehaviour {
 
         // Decay available points on this object
         decayPoints();
-
-        // Keep object in z axis
-        //transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
 
