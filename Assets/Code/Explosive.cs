@@ -16,14 +16,14 @@ public class Explosive : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetMouseButton(1)) {
-			Explode();
-		}
+		//if (Input.GetMouseButton(1)) {
+		//	Explode();
+		//}
 	}
 
     // When explosive hits anything - explode
 	void OnCollisionEnter(Collision coll) {
-        //Explode();
+        Explode();
 	}
 
 	void Explode() {
