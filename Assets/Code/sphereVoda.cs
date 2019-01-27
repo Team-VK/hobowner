@@ -14,87 +14,33 @@ public class sphereVoda : MonoBehaviour {
     //public static Transform tv;
     //public static Transform cone;
     public GameObject raindrop;
+    public Queue<GameObject> drops;
 
     private float time = 0f;
 
     // Use this for initialization
     void Start () {
+        drops = new Queue<GameObject>();
     }
-    
+
     // Update is called once per frame
     void Update () {
-        // Odds of spawning a new obstacle increses as the game goes on
+        Debug.Log("Update");
 
-        int side_rng = Random.Range(0, 2);
-        float angle_rng = 0f;
-        int velocity_rng = Random.Range(40, 60);    
-        int object_rng = Random.Range(0,9);
-        float spawnheight_rng = Random.Range(10f, 90f); //todo: sensible values for y coordinate of spawned objects
-
-        time += Time.deltaTime / 100f;  //* (float) GameStatus.score;
-        float rnd = Random.Range(0f, 1f);
-        if (time > rnd) {
-            spawnObjectInstance(side_rng, angle_rng, velocity_rng, object_rng, spawnheight_rng);
-            time = 0f;
+        spawnRaindrop();
+        if(drops.Count > 700) { 
+            GameObject dequeuedobject = drops.Dequeue();
+            Destroy(dequeuedobject);
+            Debug.Log("Destroyed raindrop");
         }
     }
 
-    private void spawnObjectInstance(int side_rng, float angle_rng, int velocity_rng, int object_rng, float spawnheight_rng) {
-
-        //Transform[] objects = new[] {box, board, shoe, cat, fpan, bottle, bomb, tv, cone};
-        //Transform[] objects = new[] { Cube, Cube, Cube, Cube, Cube, Cube, Cube, Cube, Cube };
-
-        //Debug.Log("side rng: " + side_rng);
-        float spawnx = 0;
-        float spawny = spawnheight_rng;
-
-        if(side_rng >= 1) {
-            spawnx = -120; //todo: sensible value for left side
-            angle_rng = Random.Range(270f, 330f);
-        }
-        else
-        {
-            spawnx = 120; //todo: sensible value for right side
-            angle_rng = Random.Range(0f, 60f);
-        }
-        
-        Vector3 mainhobo = GameObject.FindGameObjectWithTag("mainhobo").transform.position;
-        var pos = Camera.main.ViewportToWorldPoint(mainhobo);
-
-        pos.x = spawnx;
-        pos.y = spawny;
-        pos.z = -270f;
-
-
-        //Debug.Log("Randomed spawn points after worldtoviewportpoint: " + pos.x + "," + spawny);
-
-        //print(objects[object_rng]);
-        GameObject spawnedobject = Instantiate(sphere, (new Vector3(pos.x, pos.y, pos.z)), Quaternion.identity);
-        //Debug.Log("World pos: " + spawnedobject.transform.position);
-        Debug.Log("Angle:" + angle_rng);
-
-        Vector3 dir;
-
-        Debug.Log("#####");
-        if (angle_rng >= 270) {
-            dir = Quaternion.AngleAxis(angle_rng, transform.TransformPoint(new Vector3(10,10,0))) * transform.TransformPoint((new Vector3(10,0,0)));
-            Debug.Log("Should fly LEFT");
-        }
-        else
-        {
-            dir = Quaternion.AngleAxis(angle_rng, transform.TransformPoint(new Vector3(-10, 10, 0))) * transform.TransformPoint(new Vector3(-10, 0, 0));
-            Debug.Log("Should fly RIGHT");
-        }
-
-
-        Vector3 transDir = dir;
-        //Vector3 transDir = transform.TransformPoint(dir);
-        spawnedobject.GetComponent<Rigidbody>().AddForce(transDir * velocity_rng);
-
-
-        Debug.Log("Velocity: " + velocity_rng);
-        Debug.Log("Direction vector: " + transDir);
-        Debug.Log("#####");
-
+    private void spawnRaindrop() {
+        float spawny = 200f;
+        float spawnx = Random.Range(-150, 150);
+        float spawnz = -270f;
+        GameObject spawnedobject = Instantiate(raindrop, (new Vector3(spawnx, spawny, spawnz)), Quaternion.identity);
+        drops.Enqueue(spawnedobject);
     }
+
 }
