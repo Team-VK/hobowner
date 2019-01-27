@@ -34,7 +34,7 @@ public class ObjectSpawner : MonoBehaviour {
         int object_rng = Random.Range(0,9);
         float spawnheight_rng = Random.Range(10f, 90f); //todo: sensible values for y coordinate of spawned objects
 
-        time += Time.deltaTime / 100f;  //* (float) GameStatus.score;
+        time += Time.deltaTime / 1000f;  //* (float) GameStatus.score;
         float rnd = Random.Range(0f, 1f);
         if (time > rnd) {
             spawnObjectInstance(side_rng, angle_rng, velocity_rng, object_rng, spawnheight_rng);
