@@ -15,5 +15,4 @@ expandedItems
 .vscode/*
 .vs/*
 
-*.meta
 *.dll
