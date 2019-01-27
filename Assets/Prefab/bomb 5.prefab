@@ -94,6 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f869c8f713a2a440790d386d87611dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionForce: 3000000
+  explosionRadius: 2000
+  upwardsModifier: 10
 --- !u!64 &5015612594167786243
 MeshCollider:
   m_ObjectHideFlags: 0

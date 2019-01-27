@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2901840329231308553}
   - component: {fileID: 2901840329231308554}
   - component: {fileID: 8841006052179620110}
+  - component: {fileID: 1998454302602107854}
   m_Layer: 0
   m_Name: Cube
   m_TagString: mainhobo
@@ -125,3 +126,15 @@ MonoBehaviour:
   availablePoints: 40
   pointDecayInterval: 0.2
   zHack: 10
+--- !u!114 &1998454302602107854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2901840329231308596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7753415be86444e9c502a68776e58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
