@@ -44,19 +44,24 @@ public class ObjectDrag : MonoBehaviour {
                     Score.score += availablePoints;
                     availablePoints = 0;
                 }   
-
-                // Move object towards mouse - the longer the distance, the faster it moves
+                // Set dragging flags as true
                 dragging = true;
                 isDraggingSomeOneElse = true;
 
+                // Determine input position, calculate the difference between camera and this.obj depth
                 Vector3 inputpos = Input.mousePosition;
                 inputpos.z = transform.position.z - (Camera.main.gameObject.transform.position.z);
-                Vector3 targetPos = Camera.main.ScreenToWorldPoint(inputpos);
 
+                // Get the mouse pointers target position
+                Vector3 targetPos = Camera.main.ScreenToWorldPoint(inputpos);
+                // Calculate direction and speed for this.obj and mouse target position
                 Vector3 trajectory = (targetPos - transform.position);
                 float distance = Vector3.Distance (targetPos, transform.position);
                 trajectory = trajectory.normalized * draggingSpeed * distance;
+                // Move the object in the mouse direction
                 rb.velocity = trajectory;
+                // Stop spinnig
+                rb.angularVelocity = Vector3.zero;
             }
         }
         else {
